@@ -6,86 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROCK PAPER SCISSORS</title>
 </head>
-<script>
-    //done->functions: getComputerChoice:gets the computer choice
-    //done->functions: playRound:compares the users choice with pc
-    //functions: game:keeps track of wins
-    //variable: pcChoice, userChoice, score(if negative computer if positive user if 0 tie)
-    let rock=2,paper=0,scissor=1;
-    let scoreUser=0,scorePc=0,round=0;
-
-    function getComputerChoice(){
-        let randomNumber = Math.floor(Math.random()*3);
-        switch(randomNumber){
-            case 0:
-                return rock;
-                break;
-            case 1:
-                return paper;
-                break;
-            case 2:
-                return scissor;
-                break;
-            default:
-                return -1;
-        }
-    }
-    
-    function getUserChoice(){
-        let am=prompt("Enter rock paper scissor.").toString();
-        if(am==null||am=="null"||am==''){
-            alert("wrong input");
-        }else{
-            switch(am.toUpperCase()){
-                case "ROCK":
-                    return rock;
-                    break;
-                case "PAPER":
-                    return paper;
-                    break;
-                case "SCISSOR":
-                    return scissor;
-                    break;
-                default:
-                    return -1;
-            }
-        }
-    }
-
-    function determineWinner(){
-        let pcChoice=getComputerChoice();
-        let userChoice=getUserChoice();
-        let userWon="User won this round!";
-        let debuger=pcChoice+" "+userChoice;
-        //rock beats scissors
-        //scissors beats paper
-        //paper beats rock
-        if(userChoice==rock && pcChoice==scissor
-        || userChoice==scissor &&  pcChoice==paper
-        || userChoice==paper && pcChoice==rock  
-        ){
-            ++scoreUser;
-            return userWon+" "+debuger;
-        }else if(userChoice==pcChoice){
-            return "tie "+debuger;
-        }else{
-            ++scorePc;
-            return "Pc won this round! "+debuger;
-        }
-    }
-
-    function game(){
-        while(round<=5){
-            let playerround=determineWinner();
-            alert("Winner: "+playerround);
-            console.log(`User Score: ${scoreUser} Computer: ${scorePc}`);
-            ++round;
-        }
-    }
-
-    game();
+<script defer src="scripts.js">
 </script>
+<link rel="stylesheet" href="style.css">
 <body>
-    
+    <div class="score">0:0</div>
+    <button class="paper">Paper</button>
+    <button class="rock">Rock</button>
+    <button class="scissor">Scissor</button>
 </body>
 </html>
